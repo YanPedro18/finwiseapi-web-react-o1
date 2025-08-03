@@ -1,0 +1,40 @@
+[
+  {
+    "key": "dashboard",
+    "label": "Dashboard",
+    "icon": "pi pi-home",
+    "data": "/dashboard"
+  },
+  {
+    "key": "usuarios",
+    "label": "Usuários",
+    "icon": "pi pi-users",
+    "children": [
+      {
+        "key": "listar",
+        "label": "Listar",
+        "icon": "pi pi-list",
+        "children": [
+          {
+            "key": "ativos",
+            "label": "Ativos",
+            "icon": "pi pi-check",
+            "data": "/usuarios/listar/ativos"
+          },
+          {
+            "key": "inativos",
+            "label": "Inativos",
+            "icon": "pi pi-times",
+            "data": "/usuarios/listar/inativos"
+          }
+        ]
+      },
+      {
+        "key": "novo",
+        "label": "Novo",
+        "icon": "pi pi-user-plus",
+        "data": "/usuarios/novo"
+      }
+    ]
+  }
+]

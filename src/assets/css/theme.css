@@ -1,0 +1,44 @@
+.p-button-accept {
+
+    color: #5DBD4C;
+}
+.red-asterisk {
+  color: red;
+}
+.p-button-accept-back {
+    border: transparent;
+    background-color: #5DBD4C;
+}
+
+ .p-inputtext:enabled:focus{
+    outline: 0 none;
+    outline-offset: 0;
+    box-shadow: 0 0 0 0.2rem #65d5516e;
+    border-color: #65d551ff;
+}
+
+ .p-inputtext:hover{
+    outline: 0 none;
+    outline-offset: 0;
+
+    border-color: #69cf57ff;
+}
+
+
+.p-password {
+    display: flex;
+    flex-direction: column;
+}
+
+.p-icon-field > .p-input-icon {
+    top: 35%;
+}
+
+.bg-red {
+    background-color: #f44336;
+}
+
+/* Se estiver usando Tailwind, pode usar hidden com customização */
+.p-tree-collapsed .p-treenode-label {
+  display: none !important;
+}

@@ -1,0 +1,181 @@
+/* login_container: Garante que a tela ocupe toda a altura */
+.login_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  min-height: 100vh;
+  width: 90vw; /* Garante que ocupe toda a largura da tela */
+  font-family: "Segoe UI", sans-serif;
+  overflow: hidden; /* Evita scroll indesejado */
+}
+
+/* login_form: Área do formulário (esquerda) */
+.login_form {
+    font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  flex: 1;
+  border-radius: 5% 0% 0 5%;
+  background-color: #f9fafb; 
+  display: flex;
+  align-items: center;
+  border-top: 2px solid #E2E5E8;
+  border-left: 2px solid #E2E5E8;
+  border-bottom: 2px solid #E2E5E8;
+
+  height: 80vh;
+  justify-content: center;
+  padding: 2rem; 
+}
+.field_email {
+  text-align: left;
+}
+.field_email > label {
+  font-size: 0.875rem;
+  color: #6b7280; /* Cor cinza para o rótulo */
+  
+}
+.field_password {
+  width: 100%; 
+  max-width: 100%; /* Força não limitar a largura */
+  flex-direction: column;
+  display: flex;
+  text-align: left;
+  margin-top: 1.5rem;
+
+}
+.field_password > label {
+  font-size: 0.875rem;
+  color: #6b7280; /* Cor cinza para o rótulo */
+  
+}
+/* login_banner: Área do banner (direita) */
+.login_banner {
+    font-family: "Montserrat", sans-serif;
+  font-style: normal;
+
+  width: 100%; /* Garante que ocupe metade da largura da tela */
+  flex: 1;
+  height: 80vh;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border-right: 3px solid #E2E5E8;
+  color: white;
+  background: #DCE35B;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #45B649, #DCE35B);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #45B649, #DCE35B); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  display: flex;
+  border-radius: 0% 5% 5% 0%;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center; /* Centraliza o conteúdo horizontalmente */
+  padding: 3rem; /* Padding ajustado */
+  text-align: center;
+
+}
+
+.password {
+
+
+  border-radius: 0.25rem;
+  border: 1px solid #d1d5db; /* Cor de borda cinza */
+
+}
+.login_banner h1 {
+  font-size: 3.4rem;
+  font-weight: 900;
+  line-height: 1.1;
+}
+
+.login_banner p {
+  font-size: 1.5rem;
+  opacity: 0.95;
+  max-width: 80%;
+}
+
+
+/* Mensagens de erro p-error */
+.p-error {
+  position: absolute; /* Posiciona a mensagem de erro abaixo do campo */
+  top: calc(100% + 5px); /* Coloca 5px abaixo do campo */
+  left: 0;
+  font-size: 0.75rem;
+  color: #ef4444;
+}
+
+
+/* --- Utilitários e Responsividade --- */
+.required {
+  color: #ef4444;
+  font-weight: bold;
+}
+
+.banner_text {
+  width: 80%;
+  border-left: 7px solid #ffffff;
+}
+.logo{
+  position: relative;
+  top: 1rem;
+  width: 27%;
+  margin: 0 auto;
+  padding: 0rem;
+
+}
+.logo > img {
+  transform: translateX(-5%);
+  width: 15rem; /* Ajuste conforme necessário */
+  height: auto; /* Mantém a proporção da imagem */
+}
+.p_text {
+  font-size: 3.5rem;
+  font-weight: 600;
+    color: #65d551ff;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.p_desc {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #cccccc;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/* @media (max-width: 768px) {
+  .login_container {
+    flex-direction: column;
+  }
+
+  .login_form,
+  .login_banner {
+    flex: none;
+    width: 100%;
+    min-height: 50vh;
+    padding: 2rem;
+  }
+
+  .login_banner h1 {
+    font-size: 2.5rem;
+  }
+
+  .login_banner p {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .login_form {
+    padding: 1rem;
+  }
+  .login_banner h1 {
+    font-size: 2rem;
+  }
+  .login_banner p {
+    font-size: 1rem;
+  }
+} */
+
