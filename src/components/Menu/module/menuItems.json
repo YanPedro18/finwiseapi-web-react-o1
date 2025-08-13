@@ -3,7 +3,7 @@
     "key": "dashboard",
     "label": "Dashboard",
     "icon": "pi pi-home",
-    "data": "/dashboard"
+    "data": "/dash"
   },
   {
     "key": "usuarios",

@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 
-import { Button } from 'primereact/button';
 import { Sidebar } from 'primereact/sidebar';
 
 import MenuTree from '../components/Menu/MenuTree';
+import HeaderLayout from '../components/HeaderLayout';
 import menuItems from '../components/Menu/module/menuItems.json';
 
 const DashboardLayout: React.FC = () => {
@@ -22,7 +22,7 @@ const DashboardLayout: React.FC = () => {
   };
 
   return (
-    <div className="flex min-h-screen w-full align-items-center">
+    <div style={{ display: 'flex', height: '100vh', width: '100%' }}>
       {/* Sidebar overlay para mobile */}
       <Sidebar
         visible={visible}
@@ -38,9 +38,16 @@ const DashboardLayout: React.FC = () => {
 
       {/* Sidebar fixa para desktop */}
       <div
-        className={`hidden md:flex flex-col h-screen transition-all duration-300 bg-red border-r ${
-          collapsed ? 'w-16' : 'w-64'
-        }`}
+        style={{
+          display: 'none',
+          flexDirection: 'column',
+          height: '100%',
+          transition: 'all 0.3s',
+          backgroundColor: '#f44336',
+          borderRight: '1px solid #e0e0e0',
+          width: collapsed ? '64px' : '256px'
+        }}
+        className="md:flex"
         onClick={() => {
           if (collapsed) {
             setCollapsed(false); // 👉 Abre
@@ -50,7 +57,7 @@ const DashboardLayout: React.FC = () => {
         }}
       >
         <div
-          className="flex-1 overflow-y-auto"
+          style={{ flex: 1, overflowY: 'auto' }}
           onClick={(e) => {
             if (!collapsed) {
               // 👉 Deixa o clique no Tree funcionar (navegar, expandir)
@@ -68,19 +75,13 @@ const DashboardLayout: React.FC = () => {
         </div>
       </div>
 
-      {/* Conteúdo principal com margin no desktop para abrir espaço para sidebar fixa */}
-      <div className="w-full">
-        <header className="flex justify-content-center  bg-red shadow px-4 py-3 border-b">
-          <h1 className="text-lg font-medium">Meu Sistema</h1>
-          {/* Botão do menu só aparece no mobile */}
-          <Button
-            icon="pi pi-bars"
-            className="p-button-text md:hidden"
-            onClick={() => setVisible(true)}
-          />
-        </header>
+      {/* Área de conteúdo principal */}
+      <div style={{ display: 'flex', flexDirection: 'column', flex: 1, height: '100%', backgroundColor: 'white' }}>
+        {/* Header no topo da área de conteúdo */}
+        <HeaderLayout onMenuClick={() => setVisible(true)} />
 
-        <main className="flex-1 p-4 overflow-y-auto">
+        {/* Conteúdo principal */}
+        <main style={{ flex: 1, padding: '16px', overflowY: 'auto' }}>
           <Outlet />
         </main>
       </div>
