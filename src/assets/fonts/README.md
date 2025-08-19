@@ -5,7 +5,7 @@ Este diretório contém as fontes InterDisplay em formato WOFF2 para uso na apli
 ## Fontes Disponíveis
 
 - **InterDisplay-Regular.woff2** - Peso 400 (Regular)
-- **InterDisplay-Medium.woff2** - Peso 500 (Medium)  
+- **InterDisplay-Medium.woff2** - Peso 500 (Medium)
 - **InterDisplay-Bold.woff2** - Peso 700 (Bold)
 - **InterDisplay-Italic.woff2** - Peso 400 (Italic)
 
@@ -14,10 +14,18 @@ Este diretório contém as fontes InterDisplay em formato WOFF2 para uso na apli
 ### 1. Classes CSS Utilitárias
 
 ```css
-.font-regular { font-weight: 400; }
-.font-medium { font-weight: 500; }
-.font-bold { font-weight: 700; }
-.font-italic { font-style: italic; }
+.font-regular {
+  font-weight: 400;
+}
+.font-medium {
+  font-weight: 500;
+}
+.font-bold {
+  font-weight: 700;
+}
+.font-italic {
+  font-style: italic;
+}
 ```
 
 ### 2. Uso Direto no CSS
@@ -70,6 +78,7 @@ As fontes são automaticamente carregadas através do arquivo `src/assets/css/gl
 ## Fallbacks
 
 A fonte InterDisplay é usada com fallbacks para garantir compatibilidade:
+
 - InterDisplay
 - -apple-system
 - BlinkMacSystemFont

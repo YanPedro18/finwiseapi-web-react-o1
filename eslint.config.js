@@ -9,7 +9,6 @@ import importPlugin from 'eslint-plugin-import';
 import globals from 'globals';
 
 export default defineConfig([
-
   {
     files: ['**/*.{ts,tsx}'],
     languageOptions: {
@@ -130,13 +129,13 @@ export default defineConfig([
       },
     },
   },
-   {
-    files: ["vite.config.ts"],
+  {
+    files: ['vite.config.ts'],
     extends: [tseslint.configs.disableTypeChecked],
     rules: {
-      "import/no-extraneous-dependencies": [
-        "error",
-        { devDependencies: ["vite.config.ts"] },
+      'import/no-extraneous-dependencies': [
+        'error',
+        { devDependencies: ['vite.config.ts'] },
       ],
     },
   },

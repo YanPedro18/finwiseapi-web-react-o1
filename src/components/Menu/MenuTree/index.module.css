@@ -9,7 +9,7 @@
   color: #738192;
 }
 .menuList {
-  margin-top: 0.0rem;
+  margin-top: 0rem;
 }
 .menuItem:hover {
   background-color: #c4c4c4ff;
@@ -19,13 +19,11 @@
 .btnSideBar > button {
   left: 0;
   top: 0;
-   margin: 0;   
-   background-color: #f5f6f6ff;
-  width: 3.0rem;
+  margin: 0;
+  background-color: #f5f6f6ff;
+  width: 3rem;
   color: #738192;
   position: absolute;
-  
-
 }
 /* 
 .btnSideBar > button:hover {
@@ -34,11 +32,10 @@
 } */
 
 .btnSideBar {
- width: 100%;
- height: 8%;
-   margin-bottom: 0.0rem;
-background-color: #f5f6f6ff;
-
+  width: 100%;
+  height: 8%;
+  margin-bottom: 0rem;
+  background-color: #f5f6f6ff;
 }
 
 .btnBars {
@@ -63,7 +60,6 @@ background-color: #f5f6f6ff;
   left: 0;
   top: 2;
   z-index: 1000;
-
 }
 
 .btnTimes:hover {

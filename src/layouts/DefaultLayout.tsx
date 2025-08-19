@@ -45,7 +45,7 @@ const DashboardLayout: React.FC = () => {
           transition: 'all 0.3s',
           backgroundColor: '#f44336',
           borderRight: '1px solid #e0e0e0',
-          width: collapsed ? '64px' : '256px'
+          width: collapsed ? '64px' : '256px',
         }}
         className="md:flex"
         onClick={() => {
@@ -79,7 +79,15 @@ const DashboardLayout: React.FC = () => {
       </div>
 
       {/* Área de conteúdo principal */}
-      <div style={{ display: 'flex', flexDirection: 'column', flex: 1, height: '100%', backgroundColor: 'white' }}>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          flex: 1,
+          height: '100%',
+          backgroundColor: 'white',
+        }}
+      >
         {/* Header no topo da área de conteúdo */}
         <HeaderLayout onMenuClick={() => setVisible(true)} />
 

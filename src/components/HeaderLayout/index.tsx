@@ -16,7 +16,7 @@ const HeaderLayout: React.FC<HeaderLayoutProps> = ({ onMenuClick }) => {
 
   // close on click outside
   useEffect(() => {
-    const clickHandler = ({ target }: MouseEvent) => {
+    const clickHandler = ({ target }: MouseEvent): any => {
       if (!dropdown.current) return;
       if (
         !dropdownOpen ||
@@ -26,13 +26,13 @@ const HeaderLayout: React.FC<HeaderLayoutProps> = ({ onMenuClick }) => {
         return;
       setDropdownOpen(false);
     };
-    document.addEventListener("click", clickHandler);
-    return () => document.removeEventListener("click", clickHandler);
+    document.addEventListener('click', clickHandler);
+    return () => document.removeEventListener('click', clickHandler);
   }, [dropdownOpen]);
 
   // close language dropdown on click outside
   useEffect(() => {
-    const clickHandler = ({ target }: MouseEvent) => {
+    const clickHandler = ({ target }: MouseEvent): any => {
       if (!languageDropdown.current) return;
       if (
         !languageDropdownOpen ||
@@ -42,45 +42,56 @@ const HeaderLayout: React.FC<HeaderLayoutProps> = ({ onMenuClick }) => {
         return;
       setLanguageDropdownOpen(false);
     };
-    document.addEventListener("click", clickHandler);
-    return () => document.removeEventListener("click", clickHandler);
+    document.addEventListener('click', clickHandler);
+    return () => document.removeEventListener('click', clickHandler);
   }, [languageDropdownOpen]);
 
   // close if the esc key is pressed
   useEffect(() => {
-    const keyHandler = ({ keyCode }: KeyboardEvent) => {
-      if (!dropdownOpen && !languageDropdownOpen || keyCode !== 27) return;
+    const keyHandler = ({ keyCode }: KeyboardEvent): any => {
+      if ((!dropdownOpen && !languageDropdownOpen) || keyCode !== 27) return;
       setDropdownOpen(false);
       setLanguageDropdownOpen(false);
     };
-    document.addEventListener("keydown", keyHandler);
-    return () => document.removeEventListener("keydown", keyHandler);
+    document.addEventListener('keydown', keyHandler);
+    return () => document.removeEventListener('keydown', keyHandler);
   }, [dropdownOpen, languageDropdownOpen]);
 
   const languages = [
     { code: 'PT-BR', name: 'Português', flag: '🇧🇷' },
     { code: 'EN', name: 'English', flag: '🇺🇸' },
-    { code: 'ES', name: 'Español', flag: '🇪🇸' }
+    { code: 'ES', name: 'Español', flag: '🇪🇸' },
   ];
 
-  const handleLanguageChange = (languageCode: string) => {
+  const handleLanguageChange = (languageCode: string): any => {
     setSelectedLanguage(languageCode);
     setLanguageDropdownOpen(false);
   };
 
   return (
-    <header style={{ 
-      display: 'flex', 
-      justifyContent: 'space-between', 
-      alignItems: 'center', 
-      backgroundColor: '#f5f6ff',
-      boxShadow: '0 1px 2px rgba(0,0,0,0.1)', 
-      padding: '12px 16px', 
-      borderBottom: '1px solid #e0e0e0',
-      flexShrink: 0
-    }}>
+    <header
+      style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        backgroundColor: '#f5f6ff',
+        boxShadow: '0 1px 2px rgba(0,0,0,0.1)',
+        padding: '12px 16px',
+        borderBottom: '1px solid #e0e0e0',
+        flexShrink: 0,
+      }}
+    >
       <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-        <h1 style={{ fontSize: '18px', fontWeight: '500', margin: 0, color: '#333' }}>FinWise</h1>
+        <h1
+          style={{
+            fontSize: '18px',
+            fontWeight: '500',
+            margin: 0,
+            color: '#333',
+          }}
+        >
+          FinWise
+        </h1>
         {/* Botão do menu só aparece no mobile */}
         <Button
           icon="pi pi-bars"
@@ -89,7 +100,7 @@ const HeaderLayout: React.FC<HeaderLayoutProps> = ({ onMenuClick }) => {
           style={{ color: '#333' }}
         />
       </div>
-      
+
       <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
         {/* Dropdown de idioma */}
         <div style={{ position: 'relative' }}>
@@ -107,19 +118,20 @@ const HeaderLayout: React.FC<HeaderLayoutProps> = ({ onMenuClick }) => {
               color: '#333',
               cursor: 'pointer',
               fontSize: '14px',
-              fontWeight: '500'
+              fontWeight: '500',
             }}
           >
             <span style={{ fontSize: '16px' }}>
-              {languages.find(lang => lang.code === selectedLanguage)?.flag || '🌐'}
+              {languages.find((lang) => lang.code === selectedLanguage)?.flag ||
+                '🌐'}
             </span>
             <span>Idioma</span>
-            <i 
-              className={`pi ${languageDropdownOpen ? 'pi-chevron-up' : 'pi-chevron-down'}`} 
+            <i
+              className={`pi ${languageDropdownOpen ? 'pi-chevron-up' : 'pi-chevron-down'}`}
               style={{ fontSize: '12px', transition: 'transform 0.2s' }}
             ></i>
           </button>
-          
+
           <div
             ref={languageDropdown}
             onFocus={() => setLanguageDropdownOpen(true)}
@@ -135,7 +147,7 @@ const HeaderLayout: React.FC<HeaderLayoutProps> = ({ onMenuClick }) => {
               border: '1px solid #e0e0e0',
               zIndex: 1000,
               display: languageDropdownOpen ? 'block' : 'none',
-              marginTop: '4px'
+              marginTop: '4px',
             }}
           >
             {/* Opções de idioma */}
@@ -151,11 +163,15 @@ const HeaderLayout: React.FC<HeaderLayoutProps> = ({ onMenuClick }) => {
                   padding: '12px 16px',
                   fontSize: '14px',
                   fontWeight: '500',
-                  color: selectedLanguage === language.code ? '#5DBD4C' : '#333',
-                  backgroundColor: selectedLanguage === language.code ? '#f0f9f0' : 'transparent',
+                  color:
+                    selectedLanguage === language.code ? '#5DBD4C' : '#333',
+                  backgroundColor:
+                    selectedLanguage === language.code
+                      ? '#f0f9f0'
+                      : 'transparent',
                   border: 'none',
                   cursor: 'pointer',
-                  transition: 'background-color 0.2s'
+                  transition: 'background-color 0.2s',
                 }}
                 onMouseEnter={(e) => {
                   if (selectedLanguage !== language.code) {
@@ -168,12 +184,17 @@ const HeaderLayout: React.FC<HeaderLayoutProps> = ({ onMenuClick }) => {
                   }
                 }}
               >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                <div
+                  style={{ display: 'flex', alignItems: 'center', gap: '12px' }}
+                >
                   <span style={{ fontSize: '18px' }}>{language.flag}</span>
                   <span>{language.name}</span>
                 </div>
                 {selectedLanguage === language.code && (
-                  <i className="pi pi-check" style={{ color: '#5DBD4C', fontSize: '14px' }}></i>
+                  <i
+                    className="pi pi-check"
+                    style={{ color: '#5DBD4C', fontSize: '14px' }}
+                  ></i>
                 )}
               </button>
             ))}
@@ -196,17 +217,17 @@ const HeaderLayout: React.FC<HeaderLayoutProps> = ({ onMenuClick }) => {
               color: '#333',
               cursor: 'pointer',
               fontSize: '14px',
-              fontWeight: '500'
+              fontWeight: '500',
             }}
           >
             <i className="pi pi-user" style={{ fontSize: '16px' }}></i>
             <span>Configurações</span>
-            <i 
-              className={`pi ${dropdownOpen ? 'pi-chevron-up' : 'pi-chevron-down'}`} 
+            <i
+              className={`pi ${dropdownOpen ? 'pi-chevron-up' : 'pi-chevron-down'}`}
               style={{ fontSize: '12px', transition: 'transform 0.2s' }}
             ></i>
           </button>
-          
+
           <div
             ref={dropdown}
             onFocus={() => setDropdownOpen(true)}
@@ -222,57 +243,67 @@ const HeaderLayout: React.FC<HeaderLayoutProps> = ({ onMenuClick }) => {
               border: '1px solid #e0e0e0',
               zIndex: 1000,
               display: dropdownOpen ? 'block' : 'none',
-              marginTop: '4px'
+              marginTop: '4px',
             }}
           >
             {/* Informações do usuário */}
-            <div style={{ 
-              display: 'flex', 
-              alignItems: 'center', 
-              gap: '12px', 
-              padding: '16px',
-              borderBottom: '1px solid #f0f0f0'
-            }}>
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '12px',
+                padding: '16px',
+                borderBottom: '1px solid #f0f0f0',
+              }}
+            >
               <div style={{ position: 'relative' }}>
-                <div style={{
-                  width: '40px',
-                  height: '40px',
-                  borderRadius: '50%',
-                  backgroundColor: '#5DBD4C',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: 'white',
-                  fontSize: '16px',
-                  fontWeight: 'bold'
-                }}>
+                <div
+                  style={{
+                    width: '40px',
+                    height: '40px',
+                    borderRadius: '50%',
+                    backgroundColor: '#5DBD4C',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: 'white',
+                    fontSize: '16px',
+                    fontWeight: 'bold',
+                  }}
+                >
                   U
                 </div>
-                <div style={{
-                  position: 'absolute',
-                  right: '-2px',
-                  top: '-2px',
-                  width: '12px',
-                  height: '12px',
-                  borderRadius: '50%',
-                  backgroundColor: '#4caf50',
-                  border: '2px solid white'
-                }}></div>
+                <div
+                  style={{
+                    position: 'absolute',
+                    right: '-2px',
+                    top: '-2px',
+                    width: '12px',
+                    height: '12px',
+                    borderRadius: '50%',
+                    backgroundColor: '#4caf50',
+                    border: '2px solid white',
+                  }}
+                ></div>
               </div>
               <div>
-                <p style={{ 
-                  fontSize: '14px', 
-                  fontWeight: '600', 
-                  margin: '0 0 2px 0',
-                  color: '#333'
-                }}>
+                <p
+                  style={{
+                    fontSize: '14px',
+                    fontWeight: '600',
+                    margin: '0 0 2px 0',
+                    color: '#333',
+                  }}
+                >
                   Usuário
                 </p>
-                <p style={{ 
-                  fontSize: '12px', 
-                  margin: 0,
-                  color: '#666'
-                }}>
+                <p
+                  style={{
+                    fontSize: '12px',
+                    margin: 0,
+                    color: '#666',
+                  }}
+                >
                   usuario@email.com
                 </p>
               </div>
@@ -292,10 +323,14 @@ const HeaderLayout: React.FC<HeaderLayoutProps> = ({ onMenuClick }) => {
                   fontWeight: '500',
                   color: '#333',
                   textDecoration: 'none',
-                  transition: 'background-color 0.2s'
+                  transition: 'background-color 0.2s',
                 }}
-                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#f5f5f5'}
-                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.backgroundColor = '#f5f5f5')
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.backgroundColor = 'transparent')
+                }
               >
                 Ver perfil
               </a>
@@ -311,10 +346,14 @@ const HeaderLayout: React.FC<HeaderLayoutProps> = ({ onMenuClick }) => {
                   fontWeight: '500',
                   color: '#333',
                   textDecoration: 'none',
-                  transition: 'background-color 0.2s'
+                  transition: 'background-color 0.2s',
                 }}
-                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#f5f5f5'}
-                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.backgroundColor = '#f5f5f5')
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.backgroundColor = 'transparent')
+                }
               >
                 Configurações
               </a>
@@ -330,10 +369,14 @@ const HeaderLayout: React.FC<HeaderLayoutProps> = ({ onMenuClick }) => {
                   fontWeight: '500',
                   color: '#333',
                   textDecoration: 'none',
-                  transition: 'background-color 0.2s'
+                  transition: 'background-color 0.2s',
                 }}
-                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#f5f5f5'}
-                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.backgroundColor = '#f5f5f5')
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.backgroundColor = 'transparent')
+                }
               >
                 Atalhos do teclado
                 <span style={{ fontSize: '12px', color: '#999' }}>⌘K</span>
@@ -354,10 +397,14 @@ const HeaderLayout: React.FC<HeaderLayoutProps> = ({ onMenuClick }) => {
                   fontWeight: '500',
                   color: '#333',
                   textDecoration: 'none',
-                  transition: 'background-color 0.2s'
+                  transition: 'background-color 0.2s',
                 }}
-                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#f5f5f5'}
-                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.backgroundColor = '#f5f5f5')
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.backgroundColor = 'transparent')
+                }
               >
                 Perfil da empresa
               </a>
@@ -373,10 +420,14 @@ const HeaderLayout: React.FC<HeaderLayoutProps> = ({ onMenuClick }) => {
                   fontWeight: '500',
                   color: '#333',
                   textDecoration: 'none',
-                  transition: 'background-color 0.2s'
+                  transition: 'background-color 0.2s',
                 }}
-                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#f5f5f5'}
-                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.backgroundColor = '#f5f5f5')
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.backgroundColor = 'transparent')
+                }
               >
                 Equipe
               </a>
@@ -392,10 +443,14 @@ const HeaderLayout: React.FC<HeaderLayoutProps> = ({ onMenuClick }) => {
                   fontWeight: '500',
                   color: '#333',
                   textDecoration: 'none',
-                  transition: 'background-color 0.2s'
+                  transition: 'background-color 0.2s',
                 }}
-                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#f5f5f5'}
-                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.backgroundColor = '#f5f5f5')
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.backgroundColor = 'transparent')
+                }
               >
                 Convidar colegas
               </a>
@@ -415,10 +470,14 @@ const HeaderLayout: React.FC<HeaderLayoutProps> = ({ onMenuClick }) => {
                   fontWeight: '500',
                   color: '#333',
                   textDecoration: 'none',
-                  transition: 'background-color 0.2s'
+                  transition: 'background-color 0.2s',
                 }}
-                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#f5f5f5'}
-                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.backgroundColor = '#f5f5f5')
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.backgroundColor = 'transparent')
+                }
               >
                 Changelog
               </a>
@@ -434,10 +493,14 @@ const HeaderLayout: React.FC<HeaderLayoutProps> = ({ onMenuClick }) => {
                   fontWeight: '500',
                   color: '#333',
                   textDecoration: 'none',
-                  transition: 'background-color 0.2s'
+                  transition: 'background-color 0.2s',
                 }}
-                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#f5f5f5'}
-                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.backgroundColor = '#f5f5f5')
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.backgroundColor = 'transparent')
+                }
               >
                 Comunidade
               </a>
@@ -453,10 +516,14 @@ const HeaderLayout: React.FC<HeaderLayoutProps> = ({ onMenuClick }) => {
                   fontWeight: '500',
                   color: '#333',
                   textDecoration: 'none',
-                  transition: 'background-color 0.2s'
+                  transition: 'background-color 0.2s',
                 }}
-                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#f5f5f5'}
-                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.backgroundColor = '#f5f5f5')
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.backgroundColor = 'transparent')
+                }
               >
                 Suporte
               </a>
@@ -472,10 +539,14 @@ const HeaderLayout: React.FC<HeaderLayoutProps> = ({ onMenuClick }) => {
                   fontWeight: '500',
                   color: '#333',
                   textDecoration: 'none',
-                  transition: 'background-color 0.2s'
+                  transition: 'background-color 0.2s',
                 }}
-                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#f5f5f5'}
-                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.backgroundColor = '#f5f5f5')
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.backgroundColor = 'transparent')
+                }
               >
                 API
               </a>
@@ -500,10 +571,14 @@ const HeaderLayout: React.FC<HeaderLayoutProps> = ({ onMenuClick }) => {
                   backgroundColor: 'transparent',
                   border: 'none',
                   cursor: 'pointer',
-                  transition: 'background-color 0.2s'
+                  transition: 'background-color 0.2s',
                 }}
-                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#ffebee'}
-                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.backgroundColor = '#ffebee')
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.backgroundColor = 'transparent')
+                }
               >
                 Sair
               </button>
@@ -515,4 +590,4 @@ const HeaderLayout: React.FC<HeaderLayoutProps> = ({ onMenuClick }) => {
   );
 };
 
-export default HeaderLayout; 
+export default HeaderLayout;
