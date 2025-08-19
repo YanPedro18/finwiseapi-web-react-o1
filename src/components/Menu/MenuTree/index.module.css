@@ -1,0 +1,71 @@
+.menuItem {
+  background-color: #f5f6f6ff;
+  padding: 0.75rem 1rem;
+  height: 48px; /* mesmo valor da versão expandida */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  color: #738192;
+}
+.menuList {
+  margin-top: 0.0rem;
+}
+.menuItem:hover {
+  background-color: #c4c4c4ff;
+  cursor: pointer;
+}
+
+.btnSideBar > button {
+  left: 0;
+  top: 0;
+   margin: 0;   
+   background-color: #f5f6f6ff;
+  width: 3.0rem;
+  color: #738192;
+  position: absolute;
+  
+
+}
+/* 
+.btnSideBar > button:hover {
+  background-color: #c4c4c4ff;
+  cursor: pointer;
+} */
+
+.btnSideBar {
+ width: 100%;
+ height: 8%;
+   margin-bottom: 0.0rem;
+background-color: #f5f6f6ff;
+
+}
+
+.btnBars {
+  background-color: #f5f6f6ff;
+  color: #738192;
+  width: 3.5rem;
+  position: absolute;
+  left: 0;
+  top: 2;
+  z-index: 1000;
+}
+
+.btnBars:hover {
+  background-color: #c4c4c4ff;
+}
+
+.btnTimes {
+  background-color: transparent; /* sem fundo */
+  color: #738192;
+  width: 3.5rem;
+  position: absolute;
+  left: 0;
+  top: 2;
+  z-index: 1000;
+
+}
+
+.btnTimes:hover {
+  background-color: transparent; /* se quiser hover diferente */
+}

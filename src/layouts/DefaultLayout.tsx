@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 
 import { Sidebar } from 'primereact/sidebar';
 
@@ -9,17 +9,17 @@ import menuItems from '../components/Menu/module/menuItems.json';
 
 const DashboardLayout: React.FC = () => {
   const [visible, setVisible] = useState(false);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [collapsed, setCollapsed] = useState(false);
 
-  const handleMenuClick = (item: any): void => {
-    if (item.route) {
-      navigate(item.route);
-      setVisible(false); // fecha no mobile
-    } else if (item.children) {
-      setVisible(true);
-    }
-  };
+  // const handleMenuClick = (item: any): void => {
+  //   if (item.route) {
+  //     navigate(item.route);
+  //     setVisible(false); // fecha no mobile
+  //   } else if (item.children) {
+  //     setVisible(true);
+  //   }
+  // };
 
   return (
     <div style={{ display: 'flex', height: '100vh', width: '100%' }}>
@@ -33,7 +33,7 @@ const DashboardLayout: React.FC = () => {
         dismissable={true}
         showCloseIcon={false}
       >
-        <MenuTree />
+        <MenuTree collapsed={collapsed} onExpand={() => setCollapsed(false)} />
       </Sidebar>
 
       {/* Sidebar fixa para desktop */}
@@ -71,7 +71,10 @@ const DashboardLayout: React.FC = () => {
             }
           }}
         >
-          <MenuTree collapsed={collapsed} />
+          <MenuTree
+            collapsed={collapsed}
+            onExpand={() => setCollapsed((prev) => !prev)} // toggle
+          />
         </div>
       </div>
 

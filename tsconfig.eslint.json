@@ -8,7 +8,9 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "baseUrl": "./src"
+    "baseUrl": "./src",
+
+    "types": ["react", "react-dom"]
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist"]
