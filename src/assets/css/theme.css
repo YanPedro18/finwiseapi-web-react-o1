@@ -42,34 +42,14 @@
 }
 
 .pi-home:before {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   color: #738192;
 }
-
 .pi-users:before {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   color: #738192;
 }
 
-.pi-tags:before {
-  font-size: 1.3rem;
-  color: #738192;
-}
-
-.pi-wallet:before {
-  font-size: 1.3rem;
-  color: #738192;
-}
-
-.pi-chart-line:before {
-  font-size: 1.3rem;
-  color: #738192;
-}
-
-.pi-bars  {
-  font-size: 1.3rem;
-  color: #738192;
-}
 .p-tree {
   color: #738192;
   border: none;
@@ -121,4 +101,7 @@
 }
 .p-button.p-button-icon-only.p-button-rounded {
   border-radius: 0%;
+}
+.p-tree-container{
+  margin-top: 0.0rem;
 }

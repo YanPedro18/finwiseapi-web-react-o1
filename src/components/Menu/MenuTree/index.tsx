@@ -63,9 +63,9 @@ const MenuTree: React.FC<MenuTreeProps> = ({ collapsed = false, onExpand }) => {
       {/* Lista de itens do menu */}
       <div className="pt-12">
         {collapsed ? (
-          <ul className="space-y-4 w-full">
+          <ul className={`${styled.menuList} space-y-4 w-full`}>
             {nodes.map((item) => (
-              <li className={styled.menuList} key={item.key}>
+              <li key={item.key}>
                 <div
                   onClick={(e) => {
                     e.stopPropagation(); // ⚠️ bloqueia clique no container pai
