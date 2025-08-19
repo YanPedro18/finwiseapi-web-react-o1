@@ -7,14 +7,12 @@ import { InputText } from 'primereact/inputtext';
 import { Password } from 'primereact/password';
 import { classNames } from 'primereact/utils';
 import { z } from 'zod';
-
 import finwise from '../../assets/imgs/gemini.png';
 // Importações de CSS
-import 'primereact/resources/themes/lara-light-blue/theme.css';
-import 'primereact/resources/primereact.min.css';
-import 'primeicons/primeicons.css';
 import 'primeflex/primeflex.css';
-
+import 'primeicons/primeicons.css';
+import 'primereact/resources/primereact.min.css';
+import 'primereact/resources/themes/lara-light-blue/theme.css';
 import styles from './index.module.css';
 
 // --- Definição do Schema de Validação ---

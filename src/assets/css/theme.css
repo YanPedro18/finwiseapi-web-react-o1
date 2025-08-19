@@ -1,44 +1,124 @@
 .p-button-accept {
-
-    color: #5DBD4C;
+  color: #5dbd4c;
 }
 .red-asterisk {
   color: red;
 }
 .p-button-accept-back {
-    border: transparent;
-    background-color: #5DBD4C;
+  border: transparent;
+  background-color: #5dbd4c;
 }
 
- .p-inputtext:enabled:focus{
-    outline: 0 none;
-    outline-offset: 0;
-    box-shadow: 0 0 0 0.2rem #65d5516e;
-    border-color: #65d551ff;
+.p-inputtext:enabled:focus {
+  outline: 0 none;
+  outline-offset: 0;
+  box-shadow: 0 0 0 0.2rem #65d5516e;
+  border-color: #65d551ff;
 }
 
- .p-inputtext:hover{
-    outline: 0 none;
-    outline-offset: 0;
+.p-inputtext:hover {
+  outline: 0 none;
+  outline-offset: 0;
 
-    border-color: #69cf57ff;
+  border-color: #69cf57ff;
 }
-
 
 .p-password {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .p-icon-field > .p-input-icon {
-    top: 35%;
+  top: 35%;
 }
 
 .bg-red {
-    background-color: #f44336;
+  background-color: #65d221ff;
 }
 
 /* Se estiver usando Tailwind, pode usar hidden com customização */
 .p-tree-collapsed .p-treenode-label {
   display: none !important;
+}
+
+.pi-home:before {
+  font-size: 1.3rem;
+  color: #738192;
+}
+
+.pi-users:before {
+  font-size: 1.3rem;
+  color: #738192;
+}
+
+.pi-tags:before {
+  font-size: 1.3rem;
+  color: #738192;
+}
+
+.pi-wallet:before {
+  font-size: 1.3rem;
+  color: #738192;
+}
+
+.pi-chart-line:before {
+  font-size: 1.3rem;
+  color: #738192;
+}
+
+.pi-bars  {
+  font-size: 1.3rem;
+  color: #738192;
+}
+.p-tree {
+  color: #738192;
+  border: none;
+  width: 16rem;
+  border-radius: 0rem;
+  background-color: #f5f6f6ff;
+}
+/* Label */
+.p-treenode-label {
+  font-size: 1.1rem;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: opacity 0.2s ease;
+}
+
+.p-treenode-content {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  height: 48px; /* ← troque min-height por height */
+  transition: all 0.2s ease;
+}
+
+.p-treenode-content i {
+  font-size: 1.5rem;
+  height: 1.5rem;
+  line-height: 1.5rem;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Estilo só será aplicado se a Tree tiver a classe .collapsed-tree */
+.collapsed-tree .p-treenode-label {
+  display: none;
+}
+
+/* Empurra a setinha pra direita */
+.p-tree .p-tree-toggler {
+  margin-left: auto;
+  order: 2;
+}
+
+.p-button:focus {
+  outline: 0 none;
+  outline-offset: 0;
+  box-shadow: none;
+
+}
+.p-button.p-button-icon-only.p-button-rounded {
+  border-radius: 0%;
 }

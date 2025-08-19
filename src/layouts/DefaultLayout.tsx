@@ -1,28 +1,27 @@
 import { useState } from 'react';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 
 import { Button } from 'primereact/button';
 import { Sidebar } from 'primereact/sidebar';
 
 import MenuTree from '../components/Menu/MenuTree';
-import menuItems from '../components/Menu/module/menuItems.json';
 
 const DashboardLayout: React.FC = () => {
   const [visible, setVisible] = useState(false);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [collapsed, setCollapsed] = useState(false);
 
-  const handleMenuClick = (item: any): void => {
-    if (item.route) {
-      navigate(item.route);
-      setVisible(false); // fecha no mobile
-    } else if (item.children) {
-      setVisible(true);
-    }
-  };
+  // const handleMenuClick = (item: any): void => {
+  //   if (item.route) {
+  //     navigate(item.route);
+  //     setVisible(false); // fecha no mobile
+  //   } else if (item.children) {
+  //     setVisible(true);
+  //   }
+  // };
 
   return (
-    <div className="flex min-h-screen w-full align-items-center">
+    <div className="flex min-h-screen w-full ">
       {/* Sidebar overlay para mobile */}
       <Sidebar
         visible={visible}
@@ -33,7 +32,7 @@ const DashboardLayout: React.FC = () => {
         dismissable={true}
         showCloseIcon={false}
       >
-        <MenuTree />
+        <MenuTree collapsed={collapsed} onExpand={() => setCollapsed(false)} />
       </Sidebar>
 
       {/* Sidebar fixa para desktop */}
@@ -50,7 +49,7 @@ const DashboardLayout: React.FC = () => {
         }}
       >
         <div
-          className="flex-1 overflow-y-auto"
+          className="flex-1 overflow-y-auto w-full"
           onClick={(e) => {
             if (!collapsed) {
               // 👉 Deixa o clique no Tree funcionar (navegar, expandir)
@@ -64,13 +63,15 @@ const DashboardLayout: React.FC = () => {
             }
           }}
         >
-          <MenuTree collapsed={collapsed} />
+          <MenuTree
+            collapsed={collapsed}
+            onExpand={() => setCollapsed((prev) => !prev)} // toggle
+          />
         </div>
       </div>
-
       {/* Conteúdo principal com margin no desktop para abrir espaço para sidebar fixa */}
       <div className="w-full">
-        <header className="flex justify-content-center  bg-red shadow px-4 py-3 border-b">
+        <header className="flex justify-content-center  bg-red shadow px-2 py-3 border-b">
           <h1 className="text-lg font-medium">Meu Sistema</h1>
           {/* Botão do menu só aparece no mobile */}
           <Button
